@@ -7,11 +7,6 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    colors: {
-      brand: {
-        main: '#BDE322'
-      }
-    },
     extend: {}
   },
   plugins: []
