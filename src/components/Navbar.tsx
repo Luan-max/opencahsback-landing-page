@@ -1,16 +1,15 @@
-/* eslint-disable jsx-a11y/alt-text */
-import Link from "next/link";
-import { Disclosure } from "@headlessui/react";
-import Image from "next/image";
+import Link from 'next/link'
+import Image from 'next/image'
+import { Disclosure } from '@headlessui/react'
 
-export default function Navbar() {
-  const navigation = ["Contato", "Empresas"];
+export function Navbar() {
+  const navigation = ['Contato', 'Empresas']
 
   return (
     <div className="bg-neutral-900">
       <nav className="container relative flex flex-wrap items-center justify-between p-8 mx-auto lg:justify-between xl:px-0">
         <Disclosure>
-          {({ open }) => (
+          {() => (
             <>
               <div className="flex flex-wrap items-center justify-center w-full lg:w-auto">
                 <Link legacyBehavior href="/">
@@ -19,7 +18,7 @@ export default function Navbar() {
                       src="https://admin.opencashback.com.br/static/img/logo-white.b130427d.svg"
                       width={200}
                       height="200"
-                      alt={""}
+                      alt={''}
                     />
                   </a>
                 </Link>
@@ -42,7 +41,7 @@ export default function Navbar() {
           </ul>
           <button
             type="button"
-            className="text-neutral-900 font-semibold bg-[#BDE322] hover:bg-[#BDE322]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
+            className="text-neutral-900 font-semibold bg-brand-main hover:bg-brand-main/80 focus:ring-4 focus:outline-none rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
           >
             Fale Conosco
             <Vector />
@@ -50,7 +49,7 @@ export default function Navbar() {
         </div>
       </nav>
     </div>
-  );
+  )
 }
 
 function Vector() {
@@ -78,5 +77,5 @@ function Vector() {
         stroke-linejoin="round"
       />
     </svg>
-  );
+  )
 }

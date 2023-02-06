@@ -7,7 +7,19 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}'
   ],
   theme: {
-    extend: {}
+    extend: {
+      colors: {
+        brand: {
+          main: '#BDE322'
+        },
+        green: {
+          500: '#3E885B'
+        },
+        red: {
+          500: '#B91C1C'
+        }
+      }
+    }
   },
   plugins: []
 }
