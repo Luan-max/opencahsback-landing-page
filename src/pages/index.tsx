@@ -1,8 +1,8 @@
 import Head from 'next/head'
 
-import { PARTNERS } from '../constants/partners'
+import { PARTNERS } from '@/constants/partners'
 
-import { PartnerCard } from '../components/PartnerCard'
+import { PartnerCard } from '@/components/PartnerCard'
 
 export default function Home() {
   return (

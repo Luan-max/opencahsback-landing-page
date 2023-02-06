@@ -1,15 +1,15 @@
 import { StaticImageData } from 'next/image'
 
-import farmLogo from '../assets/logos/farm.png'
-import electroluxLogo from '../assets/logos/electrolux.png'
-import reservaLogo from '../assets/logos/reserva.png'
-import babadotopLogo from '../assets/logos/babadotop.png'
-import ventureshopLogo from '../assets/logos/ventureshop.png'
-import tacoLogo from '../assets/logos/taco.png'
-import ibyteLogo from '../assets/logos/ibyte.png'
-import indianaLogo from '../assets/logos/indiana.svg'
-import lennyLogo from '../assets/logos/lenny-niemeyer.png'
-import seliaLogo from '../assets/logos/selia.png'
+import farmLogo from '@/assets/logos/farm.png'
+import electroluxLogo from '@/assets/logos/electrolux.png'
+import reservaLogo from '@/assets/logos/reserva.png'
+import babadotopLogo from '@/assets/logos/babadotop.png'
+import ventureshopLogo from '@/assets/logos/ventureshop.png'
+import tacoLogo from '@/assets/logos/taco.png'
+import ibyteLogo from '@/assets/logos/ibyte.png'
+import indianaLogo from '@/assets/logos/indiana.svg'
+import lennyLogo from '@/assets/logos/lenny-niemeyer.png'
+import seliaLogo from '@/assets/logos/selia.png'
 
 export type Partner = {
   company: string
