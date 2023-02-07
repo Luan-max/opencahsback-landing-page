@@ -1,7 +1,7 @@
 import React from 'react'
 interface ContainerProps {
   className: string
-  children: any
+  children: React.ReactNode
 }
 
 export default function Container(props: ContainerProps) {

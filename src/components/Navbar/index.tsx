@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-
-import vector from '@/assets/icons/vector.svg'
+import { PaperPlaneTilt } from 'phosphor-react'
 
 export function Navbar() {
   const navigation = ['Contato', 'Empresas']
@@ -38,7 +37,7 @@ export function Navbar() {
             className="text-brand-secondary font-semibold bg-brand-main hover:bg-brand-main/80 rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center"
           >
             Fale Conosco
-            <Image src={vector} alt="Vector image" className="ml-2" />
+            <PaperPlaneTilt size={16} weight="bold" className="ml-2" />
           </button>
         </div>
       </nav>
