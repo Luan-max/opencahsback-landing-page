@@ -9,9 +9,9 @@ export function Hero() {
   return (
     <div className={styles.hero}>
       <Container className="flex flex-wrap">
-        <div className="flex items-center w-full lg:py-36 sm:py-0 justify-between">
-          <div className="mb-20">
-            <h1 className="text-4xl font-semibold text-white lg:text-4xl xl:text-5xl">
+        <div className="flex items-center w-full lg:w-1/2 lg:py-36 sm:py-0">
+          <div className="max-w-2xl mb-20">
+            <h1 className="text-4xl font-semibold text-white lg:text-4xl xl:text-4xl">
               A solução de <a className="text-brand-main">cashback</a> mais{' '}
               <br />
               simples, completa e inteligente.
@@ -22,7 +22,9 @@ export function Hero() {
               as etapas do funil de vendas.
             </p>
           </div>
-          <div className="mb-14">
+        </div>
+        <div className="flex items-center justify-center w-full lg:w-1/2 mb-14">
+          <div className="">
             <Image src={refund} alt="Imagem Cashback" />
           </div>
         </div>
