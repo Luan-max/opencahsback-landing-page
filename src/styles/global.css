@@ -8,6 +8,14 @@
   box-sizing: border-box;
 }
 
+.card {
+  position: absolute;
+width: 150px;
+height: 150px;
+left: 962px;
+top: 181px;
+}
+
 body {
   background: #fff;
   color: #000;

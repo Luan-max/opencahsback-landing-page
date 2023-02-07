@@ -22,7 +22,7 @@ export function Hero() {
               as etapas do funil de vendas.
             </p>
           </div>
-          <div className="mb-14 mr-14">
+          <div className="mb-14">
             <Image src={refund} alt="Imagem Cashback" />
           </div>
         </div>
