@@ -22,8 +22,8 @@ export function Benefits() {
           </span>
         </div>
       </section>
-      <Container className="flex flex-wrap justify-around">
-        <div className="flex items-center justify-center sm:py-0">
+      <Container className="flex flex-wrap justify-around max-lg:mb-[-3.5rem] max-lg:mt-[-2.5rem]">
+        <div className="flex items-center justify-center sm:py-0 sm:mb-12">
           <div className="max-w-2xl mb-20">
             <h1 className="text-4xl font-semibold text-brand-secondary lg:text-4xl xl:text-4xl">
               Desconto
@@ -38,10 +38,10 @@ export function Benefits() {
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center max-lg:hidden mr-16">
+        <div className="flex items-center justify-center max-lg:hidden max-2xl:hidden">
           <Image src={arrow} alt="Arrow" className="w-[162px]" />
         </div>
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center sm:py-0 sm:mb-12">
           <div className="max-w-2xl mb-20">
             <h1 className="text-4xl font-semibold text-brand-secondary lg:text-4xl xl:text-4xl">
               Cashback
