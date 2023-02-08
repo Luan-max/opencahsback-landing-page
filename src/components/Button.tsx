@@ -9,7 +9,7 @@ type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const BUTTON_SIZES_CLASSES = {
-  medium: 'w-[10.5rem] h-[2.5rem] text-sm',
+  medium: 'w-[10.5rem] h-[2.5rem] text-sm px-5 py-2.5',
   large: 'w-[13.125rem] h-[3.75rem] text-base',
   full: 'w-full h-[3.75rem]'
 }

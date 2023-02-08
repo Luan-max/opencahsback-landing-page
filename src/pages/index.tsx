@@ -5,6 +5,8 @@ import { Hero } from '@/components/Hero'
 import { Partners } from '@/components/sections/Partners'
 import { Impact } from '@/components/sections/Impact'
 import { Results } from '@/components/sections/Results'
+import { Benefits } from '@/components/sections/Benefits'
+import { Integrators } from '@/components/sections/Integrators'
 
 export default function Home() {
   return (
@@ -22,6 +24,8 @@ export default function Home() {
         <Partners />
         <Impact />
         <Results />
+        <Integrators />
+        <Benefits />
       </main>
     </>
   )
