@@ -7,7 +7,7 @@ interface ContainerProps {
 export default function Container(props: ContainerProps) {
   return (
     <div
-      className={`container p-8 mx-auto xl:px-0 ${
+      className={`container p-8 mx-auto ${
         props.className ? props.className : ''
       }`}
     >
