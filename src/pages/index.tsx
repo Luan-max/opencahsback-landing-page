@@ -1,12 +1,13 @@
 import Head from 'next/head'
 
 import { Navbar } from '@/components/Navbar'
-import { Hero } from '@/components/Hero'
+import { Hero } from '@/components/sections/Hero'
 import { Partners } from '@/components/sections/Partners'
 import { Impact } from '@/components/sections/Impact'
 import { Results } from '@/components/sections/Results'
 import { Benefits } from '@/components/sections/Benefits'
 import { Integrators } from '@/components/sections/Integrators'
+import { Footer } from '@/components/Footer'
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <Results />
         <Integrators />
         <Benefits />
+        <Footer />
       </main>
     </>
   )
