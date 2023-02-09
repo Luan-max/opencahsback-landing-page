@@ -23,6 +23,10 @@ module.exports = {
           500: '#B91C1C'
         }
       },
+      backgroundImage: {
+        'gradient-radial':
+          'radial-gradient(50% 50% at 50% 50%, rgba(189, 227, 34, 0.1) 0%, rgba(23, 23, 23, 0) 100%)'
+      },
       keyframes: {
         floating: {
           '0%, 100%': {

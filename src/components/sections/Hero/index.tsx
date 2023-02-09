@@ -1,12 +1,11 @@
 import Image from 'next/image'
 
-import styles from './styles.module.css'
 import refund from '@/assets/icons/refund.svg'
 
 export function Hero() {
   return (
     <section
-      className={`${styles.hero} flex flex-col lg:flex-row py-16 px-[1.625rem] sm:px-20
+      className={`bg-gradient-radial bg-neutral-900 flex flex-col lg:flex-row py-16 px-[1.625rem] sm:px-20
     lg:px-12 lg:gap-20 xl:px-16 xl:py-32 xl:gap-32 2xl:px-[7.5rem] 2xl:py-40
     2xl:gap-[16rem]`}
     >
@@ -28,7 +27,8 @@ export function Hero() {
           </p>
         </div>
       </div>
-      <div className="p-2 flex items-center justify-center  2xl:mt-[-102px] 2xl:ml-[58px]">
+
+      <div className="animate-float p-2 flex items-center justify-center 2xl:mt-[-102px] 2xl:ml-[58px]">
         <Image src={refund} alt="Imagem Cashback" />
       </div>
     </section>
