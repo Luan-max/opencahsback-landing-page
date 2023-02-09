@@ -22,6 +22,32 @@ module.exports = {
         red: {
           500: '#B91C1C'
         }
+      },
+      keyframes: {
+        floating: {
+          '0%, 100%': {
+            transform: 'translateY(-10px)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)'
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timing-function': ' cubic-bezier(0, 0, 0.2, 1)'
+          }
+        },
+        'floating-card': {
+          '0%, 100%': {
+            transform: 'translateY(-5px)',
+            'animation-timing-function': 'cubic-bezier(0.8, 0, 1, 1)'
+          },
+          '50%': {
+            transform: 'translateY(0)',
+            'animation-timing-function': ' cubic-bezier(0, 0, 0.2, 1)'
+          }
+        }
+      },
+      animation: {
+        float: 'floating 3s infinite',
+        'float-card': 'floating-card 3s infinite'
       }
     }
   },

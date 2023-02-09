@@ -24,7 +24,7 @@ export function Hero() {
           </div>
         </div>
         <div className="flex items-center justify-center w-full lg:w-1/2 mb-14">
-          <div className="">
+          <div className="animate-float">
             <Image src={refund} alt="Imagem Cashback" />
           </div>
         </div>

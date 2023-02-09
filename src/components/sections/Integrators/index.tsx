@@ -13,7 +13,7 @@ export function Integrators() {
         2xl:gap-[16rem]
       "
     >
-      <div className="flex flex-col gap-4 lg:h-[18rem] lg:justify-center">
+      <div className="flex flex-col items-center gap-4 lg:h-[18rem] lg:justify-center">
         <h1 className="text-white font-bold text-2xl xl:text-[2.375rem] xl:leading-[3.5rem]">
           Integramos com as principais soluções de mercado
         </h1>
@@ -25,8 +25,8 @@ export function Integrators() {
 
       <div
         className="
-          flex items-center justify-center mt-9 lg:mt-0 w-full lg:w-3/4 h-[18rem] 
-          xl:w-[28rem] relative
+          flex items-center justify-center mt-9 lg:mt-0 h-[18rem] 
+          m-auto w-[20rem] lg:w-[25rem] xl:w-[32rem] relative
         "
       >
         <IntegratorCard
@@ -36,7 +36,7 @@ export function Integrators() {
               items-center justify-center bg-gradient-to-r from-neutral-700
                to-neutral-800 rounded-2xl cursor-pointer transition transform
               ease-in delay-75 hover:scale-105 hover:grayscale-0 hover:opacity-100
-              absolute left-0 top-0
+              absolute left-0 top-[20%] xl:top-[5%] animate-float-card
             "
           link="https://vtex.com/br-pt/"
         />
@@ -47,7 +47,7 @@ export function Integrators() {
               items-center justify-center bg-gradient-to-r from-neutral-700
               to-neutral-800 rounded-2xl cursor-pointer transition transform
               ease-in delay-75 hover:scale-105 hover:grayscale-0 opacity-90
-              hover:opacity-100 absolute left-[6.125rem] bottom-0
+              hover:opacity-100 absolute left-[6.125rem] bottom-0 animate-float-card
             "
           link="https://www.linx.com.br/linx-commerce/"
         />
@@ -58,7 +58,8 @@ export function Integrators() {
               items-center justify-center bg-gradient-to-r from-neutral-700 
               to-neutral-800 rounded-2xl cursor-pointer transition transform
               ease-in delay-75 hover:scale-105 hover:grayscale-0 hover:opacity-100 
-              absolute left-[12rem] 2xl:top-[-3.625rem]
+              absolute left-[12rem] top-0 xl:top-[-3rem] 2xl:top-[-3.625rem] 
+              animate-float-card
             "
           link="https://www.shopify.com/br"
         />
