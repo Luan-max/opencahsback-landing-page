@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import { ResultCard } from './ResultCard'
 import { Button } from '@/components/Button'
 
@@ -25,7 +27,9 @@ export function Results() {
           </span>
 
           <div className="hidden xl:block xl:mt-10">
-            <Button type="button" label="Tenho interesse" size="large" />
+            <Link href="#contact-us">
+              <Button type="button" label="Tenho interesse" size="large" />
+            </Link>
           </div>
         </div>
 
@@ -59,7 +63,9 @@ export function Results() {
       </div>
 
       <div className="w-full md:max-w-xs xl:hidden">
-        <Button type="button" label="Tenho interesse" />
+        <Link href="#contact-us">
+          <Button type="button" label="Tenho interesse" />
+        </Link>
       </div>
     </section>
   )

@@ -5,7 +5,10 @@ import { AVERAGE_TICKET_OPTIONS } from '@/constants/average_ticket'
 
 export function ContactUs() {
   return (
-    <section className="w-full lg:flex lg:items-center lg:h-[46.5rem] relative bg-neutral-900">
+    <section
+      id="contact-us"
+      className="w-full lg:flex lg:items-center lg:h-[46.5rem] relative bg-neutral-900"
+    >
       <div
         className="
           w-full h-[22rem] hidden bg-brand-main lg:flex lg:flex-col pl-[29.5rem]

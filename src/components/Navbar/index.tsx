@@ -35,14 +35,16 @@ export function Navbar() {
             ))}
           </ul>
 
-          <Button
-            type="button"
-            label="Fale conosco"
-            size="small"
-            className="text-bold"
-          >
-            <PaperPlaneTilt size={16} weight="bold" />
-          </Button>
+          <Link href="#contact-us">
+            <Button
+              type="button"
+              label="Fale conosco"
+              size="small"
+              className="text-bold"
+            >
+              <PaperPlaneTilt size={16} weight="bold" />
+            </Button>
+          </Link>
         </div>
       </nav>
     </div>
