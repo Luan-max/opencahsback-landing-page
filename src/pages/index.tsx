@@ -5,8 +5,9 @@ import { Hero } from '@/components/sections/Hero'
 import { Partners } from '@/components/sections/Partners'
 import { Impact } from '@/components/sections/Impact'
 import { Results } from '@/components/sections/Results'
-import { Benefits } from '@/components/sections/Benefits'
 import { Integrators } from '@/components/sections/Integrators'
+import { Benefits } from '@/components/sections/Benefits'
+import { ContactUs } from '@/components/sections/ContactUs'
 import { Footer } from '@/components/Footer'
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
         <Results />
         <Integrators />
         <Benefits />
+        <ContactUs />
         <Footer />
       </main>
     </>

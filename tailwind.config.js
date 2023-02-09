@@ -13,6 +13,9 @@ module.exports = {
           main: '#BDE322',
           secondary: '#171717'
         },
+        grey: {
+          700: '#333333'
+        },
         green: {
           500: '#3E885B'
         },

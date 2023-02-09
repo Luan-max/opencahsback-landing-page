@@ -5,11 +5,12 @@ type ButtonProps = {
   label: string
   children?: ReactNode
   additionalClasses?: ClassValue[]
-  size?: 'medium' | 'large' | 'full'
+  size?: 'small' | 'medium' | 'large' | 'full'
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const BUTTON_SIZES_CLASSES = {
-  medium: 'w-[10.5rem] h-[2.5rem] text-sm px-5 py-2.5',
+  small: 'w-[10.5rem] h-[2.5rem] text-sm',
+  medium: 'w-full h-[2.75rem] text-sm',
   large: 'w-[13.125rem] h-[3.75rem] text-base',
   full: 'w-full h-[3.75rem]'
 }
@@ -18,11 +19,12 @@ export function Button({
   label,
   size = 'full',
   additionalClasses,
-  children
+  children,
+  ...rest
 }: ButtonProps) {
   return (
     <button
-      type="button"
+      {...rest}
       className={cslx(
         `
         flex justify-center text-brand-secondary bg-brand-main
