@@ -1,7 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import Container from '../../Container'
-
 import arrow from '@/assets/icons/arrow.svg'
 import logo from '@/assets/icons/logo.svg'
 
