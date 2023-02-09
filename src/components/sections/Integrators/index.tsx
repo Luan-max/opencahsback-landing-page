@@ -2,7 +2,7 @@ import { IntegratorCard } from './IntegratorCard'
 
 import vtex from '@/assets/logos/vtex.svg'
 import linx from '@/assets/logos/linx.svg'
-import shopify from '@/assets/logos/shopify.svg'
+import oracle from '@/assets/logos/oracle.svg'
 
 export function Integrators() {
   return (
@@ -52,7 +52,7 @@ export function Integrators() {
           link="https://www.linx.com.br/linx-commerce/"
         />
         <IntegratorCard
-          logo={shopify}
+          logo={oracle}
           className="
               w-[8.125rem] h-[8.125rem] xl:w-[9.375rem] xl:h-[9.375rem] flex 
               items-center justify-center bg-gradient-to-r from-neutral-700 
@@ -60,7 +60,7 @@ export function Integrators() {
               ease-in delay-75 hover:scale-105 hover:grayscale-0 hover:opacity-100 
               absolute left-[12rem] 2xl:top-[-3.625rem]
             "
-          link="https://www.shopify.com/br"
+          link="https://www.oracle.com/br/cx/ecommerce/"
         />
       </div>
     </section>
