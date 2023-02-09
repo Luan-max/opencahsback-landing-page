@@ -15,8 +15,8 @@ export function ContactUs() {
           2xl:pl-[36rem] justify-center
         "
       >
-        <div className="flex flex-col gap-3 px-20 xl:px-36 2xl:px-48">
-          <h1 className="text-2xl xl:text-[2rem] xl:leading-[3rem]">
+        <div className="flex flex-col gap-3 px-20 xl:px-36 2xl:px-48 min-[1770px]:px-72">
+          <h1 className="text-2xl xl:text-[2rem] xl:leading-[3rem] 2xl:text-4xl">
             Quer impulsionar seu negócio e transformar seus resultados?
           </h1>
           <span className="text-neutral-700 font-medium">
