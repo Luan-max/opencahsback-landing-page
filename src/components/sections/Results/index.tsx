@@ -25,7 +25,7 @@ export function Results() {
           </span>
 
           <div className="hidden xl:block xl:mt-10">
-            <Button label="Tenho interesse" size="large" />
+            <Button type="button" label="Tenho interesse" size="large" />
           </div>
         </div>
 
@@ -59,7 +59,7 @@ export function Results() {
       </div>
 
       <div className="w-full md:max-w-xs xl:hidden">
-        <Button label="Tenho interesse" />
+        <Button type="button" label="Tenho interesse" />
       </div>
     </section>
   )

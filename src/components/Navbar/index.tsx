@@ -35,7 +35,12 @@ export function Navbar() {
             ))}
           </ul>
 
-          <Button label="Fale conosco" size="medium" className="text-bold">
+          <Button
+            type="button"
+            label="Fale conosco"
+            size="small"
+            className="text-bold"
+          >
             <PaperPlaneTilt size={16} weight="bold" />
           </Button>
         </div>

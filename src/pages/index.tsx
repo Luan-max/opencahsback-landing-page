@@ -5,6 +5,7 @@ import { Hero } from '@/components/Hero'
 import { Partners } from '@/components/sections/Partners'
 import { Impact } from '@/components/sections/Impact'
 import { Results } from '@/components/sections/Results'
+import { ContactUs } from '@/components/sections/ContactUs'
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
         <Partners />
         <Impact />
         <Results />
+        <ContactUs />
       </main>
     </>
   )
