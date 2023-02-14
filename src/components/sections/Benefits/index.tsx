@@ -1,60 +1,73 @@
 import Image from 'next/image'
-import React from 'react'
+
 import arrow from '@/assets/icons/arrow.svg'
 import logo from '@/assets/icons/logo.svg'
+import { BENEFITS, NO_BENEFITS } from '@/constants/benefits'
 
 import { BenefitsCard } from './BenefitsCard'
-import { BENEFITS, NO_BENEFITS } from '@/constants/benefits'
 
 export function Benefits() {
   return (
-    <>
-      <section className="w-full py-20 flex flex-col items-center justify-center">
-        <div className="px-5 sm:px-0 flex flex-col gap-2">
-          <h1 className="text-2xl text-center md:text-4xl">
-            Esqueça o velho desconto, e venha já para o cashback!
-          </h1>
-          <span className="text-xs sm:text-sm font-semibold opacity-50 text-center md:text-base">
-            Veja as diferenças entre os dois - conheça as vantagens de nossos
-            serviços.
-          </span>
-        </div>
-      </section>
-      <div className="mx-auto p-8 flex flex-wrap justify-around max-lg:mb-[-3.5rem] max-lg:mt-[-2.5rem]">
-        <div className="flex items-center justify-center sm:py-0 sm:mb-12">
-          <div className="max-w-2xl mb-20">
-            <h1 className="text-4xl font-semibold text-brand-secondary lg:text-4xl xl:text-4xl">
+    <section className="py-16 lg:py-[5.125rem] px-[1.625rem] sm:px-12 xl:px-16 2xl:px-[7.5rem]">
+      <div className="flex flex-col gap-y-2 min-[812px]:items-center">
+        <h1 className="text-2xl leading-9 xl:text-[2.375rem] xl:leading-[3.625rem]">
+          Esqueça o velho desconto, e venha já para o cashback!
+        </h1>
+        <span className="text-sm xl:text-base font-semibold opacity-50">
+          Veja as diferenças entre os dois - conheça as vantagens de nossos
+          serviços.
+        </span>
+      </div>
+
+      <div
+        className="
+          flex flex-col xl:items-center min-[812px]:flex-row w-full justify-between 
+          gap-y-8 mt-10 lg:mt-[3.875rem]
+        "
+      >
+        <div>
+          <div className="flex flex-col">
+            <span className="text-neutral-900 text-2xl font-semibold">
               Desconto
-            </h1>
-            <span className="text-sm flex mt-1 font-medium leading-normal text-[#000000CC]">
-              sem <Image src={logo} alt="Imagem arrow" />
             </span>
-            <div className="mt-8">
-              {NO_BENEFITS.map((item, index) => (
-                <BenefitsCard icon={item.icon} title={item.title} key={index} />
-              ))}
-            </div>
+            <span className="opacity-80 text-sm font-medium">sem inovação</span>
+          </div>
+          <div className="flex flex-col gap-y-[0.625rem] mt-3 lg:mt-6">
+            {NO_BENEFITS.map((description, index) => (
+              <BenefitsCard
+                description={description}
+                type="no-benefit"
+                key={`no-benefit-${index}`}
+              />
+            ))}
           </div>
         </div>
-        <div className="flex items-center justify-center max-lg:hidden max-2xl:hidden">
-          <Image src={arrow} alt="Arrow" className="w-[162px]" />
+
+        <div className="hidden xl:block">
+          <Image src={arrow} alt="Arrow" />
         </div>
-        <div className="flex items-center justify-center sm:py-0 sm:mb-12">
-          <div className="max-w-2xl mb-20">
-            <h1 className="text-4xl font-semibold text-brand-secondary lg:text-4xl xl:text-4xl">
+
+        <div>
+          <div>
+            <span className="text-neutral-900 text-2xl font-semibold">
               Cashback
-            </h1>
-            <span className="text-sm mt-1 flex font-medium leading-normal text-[#000000CC]">
-              com <Image src={logo} alt="Imagem arrow" />
             </span>
-            <div className="mt-8">
-              {BENEFITS.map((item, index) => (
-                <BenefitsCard icon={item.icon} title={item.title} key={index} />
-              ))}
+            <div className="flex gap-x-1">
+              <span className="opacity-80 text-sm font-medium">com</span>
+              <Image src={logo} alt="Opencashback Logo" />
             </div>
+          </div>
+          <div className="flex flex-col gap-y-[0.625rem] mt-3 lg:mt-6">
+            {BENEFITS.map((description, index) => (
+              <BenefitsCard
+                description={description}
+                type="benefit"
+                key={`benefit-${index}`}
+              />
+            ))}
           </div>
         </div>
       </div>
-    </>
+    </section>
   )
 }

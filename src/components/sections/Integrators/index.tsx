@@ -8,8 +8,8 @@ export function Integrators() {
   return (
     <section
       className="
-      bg-neutral-900 flex flex-col lg:flex-row py-16 px-[1.625rem] sm:px-20
-        lg:px-12 lg:gap-20 xl:px-16 xl:py-32 xl:gap-32 2xl:px-[7.5rem] 2xl:py-40
+      bg-neutral-900 flex flex-col lg:flex-row py-16 px-[1.625rem] sm:px-12
+        lg:gap-20 xl:px-16 xl:py-32 xl:gap-32 2xl:px-[7.5rem] 2xl:py-40
         2xl:gap-[16rem]
       "
     >
