@@ -1,10 +1,14 @@
-import { PARTNERS } from '@/constants/partners'
+import { motion } from 'framer-motion'
 
+import { PARTNERS } from '@/constants/partners'
+import { getVariants } from '@/constants/animation-variants'
+
+import { SectionLayout } from '@/components/SectionLayout'
 import { PartnerCard } from './PartnerCard'
 
 export function Partners() {
   return (
-    <section className="w-full py-16 lg:py-20 flex flex-col items-center justify-center">
+    <SectionLayout className="w-full py-16 lg:py-20 flex flex-col items-center justify-center">
       <div className="px-5 sm:px-0 flex flex-col gap-2">
         <h1 className="text-2xl text-center md:text-4xl">
           Empresas revolucionando conosco
@@ -15,7 +19,10 @@ export function Partners() {
         </span>
       </div>
 
-      <div className="mt-12 lg:mt-20 px-4 flex flex-wrap max-w-5xl justify-center gap-x-5 gap-y-5">
+      <motion.div
+        className="mt-12 lg:mt-20 px-4 flex flex-wrap max-w-6xl justify-center gap-x-5 gap-y-5"
+        variants={getVariants()}
+      >
         {PARTNERS.map(partner => (
           <PartnerCard
             key={partner.company}
@@ -24,7 +31,7 @@ export function Partners() {
             link={partner.link}
           />
         ))}
-      </div>
-    </section>
+      </motion.div>
+    </SectionLayout>
   )
 }

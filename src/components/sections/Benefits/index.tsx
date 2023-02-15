@@ -1,15 +1,21 @@
 import Image from 'next/image'
+import { motion } from 'framer-motion'
 
 import arrow from '@/assets/icons/arrow.svg'
 import logo from '@/assets/icons/logo.svg'
 import { BENEFITS, NO_BENEFITS } from '@/constants/benefits'
 
+import { SectionLayout } from '@/components/SectionLayout'
 import { BenefitsCard } from './BenefitsCard'
+import { getVariants } from '@/constants/animation-variants'
 
 export function Benefits() {
   return (
-    <section className="py-16 lg:py-[5.125rem] px-[1.625rem] sm:px-12 xl:px-16 2xl:px-[7.5rem]">
-      <div className="flex flex-col gap-y-2 min-[812px]:items-center">
+    <SectionLayout className="py-16 lg:py-[5.125rem] px-[1.625rem] sm:px-12 xl:px-16 2xl:px-[7.5rem]">
+      <motion.div
+        className="flex flex-col gap-y-2 min-[812px]:items-center"
+        variants={getVariants()}
+      >
         <h1 className="text-2xl leading-9 xl:text-[2.375rem] xl:leading-[3.625rem]">
           Esqueça o velho desconto, e venha já para o cashback!
         </h1>
@@ -17,7 +23,7 @@ export function Benefits() {
           Veja as diferenças entre os dois - conheça as vantagens de nossos
           serviços.
         </span>
-      </div>
+      </motion.div>
 
       <div
         className="
@@ -25,7 +31,24 @@ export function Benefits() {
           gap-y-8 mt-10 lg:mt-[3.875rem]
         "
       >
-        <div>
+        <motion.div
+          variants={{
+            offscreen: {
+              y: 100,
+              opacity: 0
+            },
+            onscreen: {
+              y: 0,
+              opacity: 1,
+              transition: {
+                delay: 0.1,
+                type: 'spring',
+                bounce: 0.4,
+                duration: 0.8
+              }
+            }
+          }}
+        >
           <div className="flex flex-col">
             <span className="text-neutral-900 text-2xl font-semibold">
               Desconto
@@ -41,13 +64,13 @@ export function Benefits() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
 
         <div className="hidden xl:block">
           <Image src={arrow} alt="Arrow" />
         </div>
 
-        <div>
+        <motion.div variants={getVariants({ delay: 0.2 })}>
           <div>
             <span className="text-neutral-900 text-2xl font-semibold">
               Cashback
@@ -66,8 +89,8 @@ export function Benefits() {
               />
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </SectionLayout>
   )
 }

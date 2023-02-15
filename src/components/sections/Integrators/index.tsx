@@ -1,19 +1,27 @@
-import { IntegratorCard } from './IntegratorCard'
+import { motion } from 'framer-motion'
 
 import vtex from '@/assets/logos/vtex.svg'
 import linx from '@/assets/logos/linx.svg'
 import oracle from '@/assets/logos/oracle.svg'
 
+import { SectionLayout } from '@/components/SectionLayout'
+import { IntegratorCard } from './IntegratorCard'
+
+import { getVariants } from '@/constants/animation-variants'
+
 export function Integrators() {
   return (
-    <section
+    <SectionLayout
       className="
       bg-neutral-900 flex flex-col lg:flex-row py-16 px-[1.625rem] sm:px-12
         lg:gap-20 xl:px-16 xl:py-32 xl:gap-32 2xl:px-[7.5rem] 2xl:py-40
         2xl:gap-[16rem]
       "
     >
-      <div className="flex flex-col items-center gap-4 lg:h-[18rem] lg:justify-center">
+      <motion.div
+        className="flex flex-col items-center gap-4 lg:h-[18rem] lg:justify-center"
+        variants={getVariants()}
+      >
         <h1 className="text-white font-bold text-2xl xl:text-[2.375rem] xl:leading-[3.5rem]">
           Integramos com as principais soluções de mercado
         </h1>
@@ -21,13 +29,14 @@ export function Integrators() {
           A nossa plataforma API first foi feita de forma intuitiva para
           facilitar a geração de resultado.
         </span>
-      </div>
+      </motion.div>
 
-      <div
+      <motion.div
         className="
           flex items-center justify-center mt-9 lg:mt-0 h-[18rem] 
           m-auto w-[20rem] lg:w-[25rem] xl:w-[32rem] relative
         "
+        variants={getVariants({ delay: 0.1 })}
       >
         <IntegratorCard
           logo={vtex}
@@ -63,7 +72,7 @@ export function Integrators() {
             "
           link="https://www.oracle.com/br/cx/ecommerce/"
         />
-      </div>
-    </section>
+      </motion.div>
+    </SectionLayout>
   )
 }
