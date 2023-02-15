@@ -1,7 +1,7 @@
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 
-import { AVERAGE_TICKET_OPTIONS } from '@/constants/average_ticket'
+import { AVERAGE_TICKET_OPTIONS } from '@/constants/average-ticket'
 
 export function ContactUs() {
   return (
