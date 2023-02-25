@@ -1,33 +1,20 @@
-import { FormEvent, useState } from 'react'
-
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
+import { Select } from '@/components/Select'
 
-import { AVERAGE_TICKET_OPTIONS } from '@/constants/average-ticket'
-import { WHATSAPP_BASE_URL } from '@/constants/whatsapp'
+import { useContactUsForm } from './use-contact-us-form'
 
 export function ContactUs() {
-  const [name, setName] = useState('')
-  const [company, setCompany] = useState('')
-  const [email, setEmail] = useState('')
-  const [averageTicket, setAverageTicket] = useState('')
-  const [ask, setAsk] = useState('')
-
-  function handleWhatsAppContact(event: FormEvent<HTMLFormElement>) {
-    event.preventDefault()
-
-    const messageText = `
-    Olá, me chamo ${name}, sou da empresa ${company}, e gostaria de perguntar ${
-      ask
-        ? ask
-        : `sobre os planos para utilização da plataforma
-    Opencashback.`
-    } 
-    Nosso ticket médio é de ${averageTicket}, e meu e-mail para contato é ${email}.
-    `
-
-    window.open(`${WHATSAPP_BASE_URL}?text=${messageText}`, '_blank')?.focus()
-  }
+  const {
+    handleSubmit,
+    isFormValid,
+    handleNameChange,
+    handleEmailChange,
+    handleCompanyChange,
+    handleAverageTicketChange,
+    handleAskChange,
+    getErrorMessageByFieldName
+  } = useContactUsForm()
 
   return (
     <section
@@ -61,49 +48,44 @@ export function ContactUs() {
 
           <form
             className="flex flex-col gap-y-4 mt-4 lg:mt-[2.625rem]"
-            onSubmit={handleWhatsAppContact}
+            onSubmit={handleSubmit}
+            noValidate
           >
             <Input
-              placeholder="Nome"
-              onChange={event => setName(event.target.value)}
-            />
-            <Input
-              placeholder="Empresa"
-              onChange={event => setCompany(event.target.value)}
+              placeholder="Nome *"
+              onChange={handleNameChange}
+              error={getErrorMessageByFieldName('name') || null}
             />
 
             <Input
-              placeholder="Email"
-              onChange={event => setEmail(event.target.value)}
+              placeholder="Empresa *"
+              onChange={handleCompanyChange}
+              error={getErrorMessageByFieldName('company') || null}
             />
 
-            <select
-              className="
-              w-full h-11 px-4 bg-grey-700 text-neutral-400 rounded appearance-none
-              text-sm font-medium border border-transparent outline-none
-              focus:border-brand-main/50 transition-colors ease-in delay-75
-            "
-              onChange={event => setAverageTicket(event.target.value)}
-            >
-              <option value="">Ticket médio</option>
-              {AVERAGE_TICKET_OPTIONS.map(ticket => (
-                <option key={ticket.key} value={ticket.value}>
-                  {ticket.value}
-                </option>
-              ))}
-            </select>
+            <Input
+              placeholder="E-mail *"
+              type="email"
+              onChange={handleEmailChange}
+              error={getErrorMessageByFieldName('email') || null}
+            />
+
+            <Select
+              onChange={handleAverageTicketChange}
+              error={getErrorMessageByFieldName('average-ticket') || null}
+            />
 
             <textarea
               placeholder="O que gostaria de perguntar?"
               className="
               px-4 py-[0.625rem] h-32 bg-grey-700 text-neutral-400 rounded text-sm
               font-medium resize-none border border-transparent outline-none 
-              focus:border-brand-main/50 transition-colors ease-in delay-75
+            focus:border-brand-main/50 transition-colors ease-in delay-75
             "
-              onChange={event => setAsk(event.target.value)}
+              onChange={handleAskChange}
             />
 
-            <Button label="Enviar" size="medium" />
+            <Button label="Enviar" size="medium" disabled={isFormValid} />
           </form>
         </div>
       </div>
