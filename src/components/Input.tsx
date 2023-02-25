@@ -1,7 +1,7 @@
 import { InputHTMLAttributes } from 'react'
 
 type InputProps = {
-  error: string | null
+  error: string
 } & InputHTMLAttributes<HTMLInputElement>
 
 export function Input({ error, ...rest }: InputProps) {

@@ -5,16 +5,8 @@ import { Select } from '@/components/Select'
 import { useContactUsForm } from './use-contact-us-form'
 
 export function ContactUs() {
-  const {
-    handleSubmit,
-    isFormValid,
-    handleNameChange,
-    handleEmailChange,
-    handleCompanyChange,
-    handleAverageTicketChange,
-    handleAskChange,
-    getErrorMessageByFieldName
-  } = useContactUsForm()
+  const { handleSubmit, isFormValid, handleFormChange, errors } =
+    useContactUsForm()
 
   return (
     <section
@@ -53,26 +45,30 @@ export function ContactUs() {
           >
             <Input
               placeholder="Nome *"
-              onChange={handleNameChange}
-              error={getErrorMessageByFieldName('name') || null}
+              onChange={event => handleFormChange('name', event.target.value)}
+              error={errors.name}
             />
 
             <Input
               placeholder="Empresa *"
-              onChange={handleCompanyChange}
-              error={getErrorMessageByFieldName('company') || null}
+              onChange={event =>
+                handleFormChange('company', event.target.value)
+              }
+              error={errors.company}
             />
 
             <Input
               placeholder="E-mail *"
               type="email"
-              onChange={handleEmailChange}
-              error={getErrorMessageByFieldName('email') || null}
+              onChange={event => handleFormChange('email', event.target.value)}
+              error={errors.email}
             />
 
             <Select
-              onChange={handleAverageTicketChange}
-              error={getErrorMessageByFieldName('average-ticket') || null}
+              onChange={event =>
+                handleFormChange('averageTicket', event.target.value)
+              }
+              error={errors.averageTicket}
             />
 
             <textarea
@@ -82,9 +78,8 @@ export function ContactUs() {
               font-medium resize-none border border-transparent outline-none 
             focus:border-brand-main/50 transition-colors ease-in delay-75
             "
-              onChange={handleAskChange}
+              onChange={event => handleFormChange('ask', event.target.value)}
             />
-
             <Button label="Enviar" size="medium" disabled={isFormValid} />
           </form>
         </div>

@@ -3,7 +3,7 @@ import { SelectHTMLAttributes } from 'react'
 import { AVERAGE_TICKET_OPTIONS } from '@/constants/average-ticket'
 
 type SeleectProps = {
-  error: string | null
+  error: string
 } & SelectHTMLAttributes<HTMLSelectElement>
 
 export function Select({ error, ...rest }: SeleectProps) {

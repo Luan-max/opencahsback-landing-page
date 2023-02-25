@@ -1,17 +1,21 @@
-import { ChangeEvent, FormEvent, useState } from 'react'
+import { FormEvent, useState } from 'react'
+import { z } from 'zod'
 
 import { WHATSAPP_BASE_URL } from '@/constants/whatsapp'
+import {
+  ConvertGenericErrorResponse,
+  convertZodToGenericError
+} from '@/utils/convert-zod-to-generic-error'
 
-import useErrors from '@/hooks/use-errors'
-import isEmailValid from '@/utils/is-email-valid'
+const contactUsFormSchema = z.object({
+  name: z.string().min(1, 'Nome é obrigatório'),
+  company: z.string().min(1, 'Empresa é obrigatório'),
+  email: z.string().email('Email inválido').min(1, 'Email é obrigatório'),
+  averageTicket: z.string().min(1, 'Ticket médio é obrigatório'),
+  ask: z.string().optional()
+})
 
-type MessageTextBody = {
-  name: string
-  company: string
-  email: string
-  averageTicket: string
-  ask?: string
-}
+type ContactUsFormValues = z.infer<typeof contactUsFormSchema>
 
 function generateMessageText({
   name,
@@ -19,107 +23,72 @@ function generateMessageText({
   email,
   averageTicket,
   ask
-}: MessageTextBody) {
+}: ContactUsFormValues) {
   return `
   Olá, me chamo ${name}, sou da empresa ${company}, e gostaria de perguntar ${
     ask
       ? ask
       : `sobre os planos para utilização da plataforma
   Opencashback.`
-  }
+  }\n
   Nosso ticket médio é de ${averageTicket}, e meu e-mail para contato é ${email}.
   `
 }
 
-export function useContactUsForm() {
-  const [name, setName] = useState('')
-  const [company, setCompany] = useState('')
-  const [email, setEmail] = useState('')
-  const [averageTicket, setAverageTicket] = useState('')
-  const [ask, setAsk] = useState('')
+const INITIAL_VALUES = {
+  name: '',
+  company: '',
+  email: '',
+  averageTicket: '',
+  ask: ''
+}
 
-  const { errors, setError, removeError, getErrorMessageByFieldName } =
-    useErrors()
+export function useContactUsForm() {
+  const [formValues, setFormValues] =
+    useState<ContactUsFormValues>(INITIAL_VALUES)
+  const [errors, setErrors] =
+    useState<ConvertGenericErrorResponse<ContactUsFormValues>>(INITIAL_VALUES)
+
+  const isFormValid = Object.values(errors).every(error => error === '')
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
 
-    const MESSAGE_TEXT = generateMessageText({
-      name,
-      company,
-      email,
-      averageTicket,
-      ask
-    })
+    const result = contactUsFormSchema.safeParse(formValues)
+
+    if (!result.success) {
+      setErrors(convertZodToGenericError(result.error.issues))
+      return
+    }
+
+    const MESSAGE_TEXT = generateMessageText(formValues)
 
     window.open(`${WHATSAPP_BASE_URL}?text=${MESSAGE_TEXT}`, '_blank')?.focus()
   }
 
-  const isFormValid = !(
-    name &&
-    company &&
-    email &&
-    averageTicket &&
-    errors.length === 0
-  )
+  function handleFormChange(field: keyof ContactUsFormValues, value: string) {
+    setErrors(prevState => ({ ...prevState, [field]: '' }))
+    setFormValues(prevState => ({ ...prevState, [field]: value }))
 
-  function handleNameChange(event: ChangeEvent<HTMLInputElement>) {
-    setName(event.target.value)
+    const pastValues = { ...formValues, [field]: value }
 
-    if (!event.target.value) {
-      setError({ field: 'name', message: 'Nome é obrigatório' })
-    } else {
-      removeError('name')
+    const result = contactUsFormSchema.safeParse(pastValues)
+
+    if (!result.success) {
+      const validationErrors = convertZodToGenericError<ContactUsFormValues>(
+        result.error.issues
+      )
+      setErrors(prevState => ({
+        ...prevState,
+        [field]: validationErrors[field]
+      }))
     }
-  }
-
-  function handleEmailChange(event: ChangeEvent<HTMLInputElement>) {
-    setEmail(event.target.value)
-
-    if (event.target.value && !isEmailValid(event.target.value)) {
-      setError({ field: 'email', message: 'E-mail inválido' })
-    } else if (!event.target.value) {
-      setError({ field: 'email', message: 'E-mail é obrigatório' })
-    } else {
-      removeError('email')
-    }
-  }
-
-  function handleCompanyChange(event: ChangeEvent<HTMLInputElement>) {
-    setCompany(event.target.value)
-
-    if (!event.target.value) {
-      setError({ field: 'company', message: 'Empresa é obrigatório' })
-    } else {
-      removeError('company')
-    }
-  }
-
-  function handleAverageTicketChange(event: ChangeEvent<HTMLSelectElement>) {
-    setAverageTicket(event.target.value)
-
-    if (!event.target.value) {
-      setError({
-        field: 'average-ticket',
-        message: 'Ticket médio é obrigatório'
-      })
-    } else {
-      removeError('average-ticket')
-    }
-  }
-
-  function handleAskChange(event: ChangeEvent<HTMLTextAreaElement>) {
-    setAsk(event.target.value)
   }
 
   return {
     handleSubmit,
     isFormValid,
-    handleNameChange,
-    handleEmailChange,
-    handleCompanyChange,
-    handleAverageTicketChange,
-    handleAskChange,
-    getErrorMessageByFieldName
+    handleFormChange,
+    errors
   }
 }
