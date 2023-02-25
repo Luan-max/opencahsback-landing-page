@@ -1,9 +1,34 @@
+import { FormEvent, useState } from 'react'
+
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
 
 import { AVERAGE_TICKET_OPTIONS } from '@/constants/average-ticket'
+import { WHATSAPP_BASE_URL } from '@/constants/whatsapp'
 
 export function ContactUs() {
+  const [name, setName] = useState('')
+  const [company, setCompany] = useState('')
+  const [email, setEmail] = useState('')
+  const [averageTicket, setAverageTicket] = useState('')
+  const [ask, setAsk] = useState('')
+
+  function handleWhatsAppContact(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+
+    const messageText = `
+    Olá, me chamo ${name}, sou da empresa ${company}, e gostaria de perguntar ${
+      ask
+        ? ask
+        : `sobre os planos para utilização da plataforma
+    Opencashback.`
+    } 
+    Nosso ticket médio é de ${averageTicket}, e meu e-mail para contato é ${email}.
+    `
+
+    window.open(`${WHATSAPP_BASE_URL}?text=${messageText}`, '_blank')?.focus()
+  }
+
   return (
     <section
       id="contact-us"
@@ -34,10 +59,23 @@ export function ContactUs() {
         <div className="px-6 py-8 sm:px-12 lg:px-14 lg:py-11 bg-neutral-800 rounded">
           <h1 className="text-2xl text-white lg:text-3xl">Fale conosco</h1>
 
-          <form className="flex flex-col gap-y-4 mt-4 lg:mt-[2.625rem]">
-            <Input placeholder="Nome" />
-            <Input placeholder="Telefone" />
-            <Input placeholder="Email" />
+          <form
+            className="flex flex-col gap-y-4 mt-4 lg:mt-[2.625rem]"
+            onSubmit={handleWhatsAppContact}
+          >
+            <Input
+              placeholder="Nome"
+              onChange={event => setName(event.target.value)}
+            />
+            <Input
+              placeholder="Empresa"
+              onChange={event => setCompany(event.target.value)}
+            />
+
+            <Input
+              placeholder="Email"
+              onChange={event => setEmail(event.target.value)}
+            />
 
             <select
               className="
@@ -45,10 +83,11 @@ export function ContactUs() {
               text-sm font-medium border border-transparent outline-none
               focus:border-brand-main/50 transition-colors ease-in delay-75
             "
+              onChange={event => setAverageTicket(event.target.value)}
             >
               <option value="">Ticket médio</option>
               {AVERAGE_TICKET_OPTIONS.map(ticket => (
-                <option key={ticket.key} value={ticket.key}>
+                <option key={ticket.key} value={ticket.value}>
                   {ticket.value}
                 </option>
               ))}
@@ -61,6 +100,7 @@ export function ContactUs() {
               font-medium resize-none border border-transparent outline-none 
               focus:border-brand-main/50 transition-colors ease-in delay-75
             "
+              onChange={event => setAsk(event.target.value)}
             />
 
             <Button label="Enviar" size="medium" />
