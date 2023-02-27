@@ -82,7 +82,8 @@ export function ContactUs() {
             "
               onChange={event => handleFormChange('ask', event.target.value)}
             />
-            <Button label="Enviar" size="medium" disabled={isFormValid} />
+
+            <Button label="Enviar" size="medium" disabled={!isFormValid} />
           </form>
         </div>
       </div>

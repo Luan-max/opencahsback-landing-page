@@ -10,7 +10,7 @@ import {
 const contactUsFormSchema = z.object({
   name: z.string().min(1, 'Nome é obrigatório'),
   company: z.string().min(1, 'Empresa é obrigatório'),
-  email: z.string().email('Email inválido').min(1, 'Email é obrigatório'),
+  email: z.string().email('E-mail inválido').min(1, 'E-mail é obrigatório'),
   averageTicket: z.string().min(1, 'Ticket médio é obrigatório'),
   ask: z.string().optional()
 })
@@ -80,7 +80,7 @@ export function useContactUsForm() {
       )
       setErrors(prevState => ({
         ...prevState,
-        [field]: validationErrors[field]
+        [field]: validationErrors[field] || ''
       }))
     }
   }
