@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { PaperPlaneTilt } from 'phosphor-react'
+import { WhatsappLogo } from 'phosphor-react'
 
 import { Button } from '../Button'
 
@@ -54,7 +54,7 @@ export function Navbar() {
               size="small"
               className="text-bold"
             >
-              <PaperPlaneTilt size={16} weight="bold" />
+              <WhatsappLogo size={18} weight="bold" />
             </Button>
           </Link>
         </div>
