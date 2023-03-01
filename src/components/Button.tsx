@@ -29,7 +29,8 @@ export function Button({
         `
         flex justify-center text-brand-secondary bg-brand-main
         font-semibold hover:brightness-90 rounded-lg text-center  
-        transition-all ease-in delay-75 items-center gap-2
+        transition-all ease-in delay-75 items-center gap-2 disabled:opacity-50
+        disabled:cursor-default
       `,
         additionalClasses,
         BUTTON_SIZES_CLASSES[size]

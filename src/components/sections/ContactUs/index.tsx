@@ -1,9 +1,15 @@
+'use client'
+
 import { Button } from '@/components/Button'
 import { Input } from '@/components/Input'
+import { Select } from '@/components/Select'
 
-import { AVERAGE_TICKET_OPTIONS } from '@/constants/average-ticket'
+import { useContactUsForm } from './use-contact-us-form'
 
 export function ContactUs() {
+  const { handleSubmit, isFormValid, handleFormChange, errors } =
+    useContactUsForm()
+
   return (
     <section
       id="contact-us"
@@ -34,36 +40,50 @@ export function ContactUs() {
         <div className="px-6 py-8 sm:px-12 lg:px-14 lg:py-11 bg-neutral-800 rounded">
           <h1 className="text-2xl text-white lg:text-3xl">Fale conosco</h1>
 
-          <form className="flex flex-col gap-y-4 mt-4 lg:mt-[2.625rem]">
-            <Input placeholder="Nome" />
-            <Input placeholder="Telefone" />
-            <Input placeholder="Email" />
+          <form
+            className="flex flex-col gap-y-4 mt-4 lg:mt-[2.625rem]"
+            onSubmit={handleSubmit}
+            noValidate
+          >
+            <Input
+              placeholder="Nome *"
+              onChange={event => handleFormChange('name', event.target.value)}
+              error={errors.name}
+            />
 
-            <select
-              className="
-              w-full h-11 px-4 bg-grey-700 text-neutral-400 rounded appearance-none
-              text-sm font-medium border border-transparent outline-none
-              focus:border-brand-main/50 transition-colors ease-in delay-75
-            "
-            >
-              <option value="">Ticket médio</option>
-              {AVERAGE_TICKET_OPTIONS.map(ticket => (
-                <option key={ticket.key} value={ticket.key}>
-                  {ticket.value}
-                </option>
-              ))}
-            </select>
+            <Input
+              placeholder="Empresa *"
+              onChange={event =>
+                handleFormChange('company', event.target.value)
+              }
+              error={errors.company}
+            />
+
+            <Input
+              placeholder="E-mail *"
+              type="email"
+              onChange={event => handleFormChange('email', event.target.value)}
+              error={errors.email}
+            />
+
+            <Select
+              onChange={event =>
+                handleFormChange('averageTicket', event.target.value)
+              }
+              error={errors.averageTicket}
+            />
 
             <textarea
               placeholder="O que gostaria de perguntar?"
               className="
               px-4 py-[0.625rem] h-32 bg-grey-700 text-neutral-400 rounded text-sm
               font-medium resize-none border border-transparent outline-none 
-              focus:border-brand-main/50 transition-colors ease-in delay-75
+            focus:border-brand-main/50 transition-colors ease-in delay-75
             "
+              onChange={event => handleFormChange('ask', event.target.value)}
             />
 
-            <Button label="Enviar" size="medium" />
+            <Button label="Enviar" size="medium" disabled={!isFormValid} />
           </form>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { StaticImageData } from 'next/image'
 import Image from 'next/image'
 import Link from 'next/link'
 
-interface IntegratorCardProps {
+type IntegratorCardProps = {
   logo: StaticImageData
   link: string
   className: string
